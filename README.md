@@ -1,1 +1,2 @@
-# Repository for the code from "The Flask Mega Tutorial" by Miguel Grinberg
+# Flask Tuotorial
+Repository for the code from "The Flask Mega Tutorial" by Miguel Grinberg
