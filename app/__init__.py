@@ -9,5 +9,6 @@ webapp.config.from_object(Config)
 db = SQLAlchemy(webapp)
 migrate = Migrate(webapp, db)
 login = LoginManager(webapp)
+login.login_view = 'login'
 
 from app import routes, models
