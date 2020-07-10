@@ -11,6 +11,8 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)  # pylint: disable=no-member
     email = db.Column(db.String(120), index=True, unique=True)  # pylint: disable=no-member
     password_hash = db.Column(db.String(128))  # pylint: disable=no-member
+    about_me = db.Column(db.String(140))  # pylint: disable=no-member
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)  # pylint: disable=no-member
     posts = db.relationship('Post', backref='author', lazy='dynamic')  # pylint: disable=no-member
 
     def __repr__(self):
