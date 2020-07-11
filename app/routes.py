@@ -5,8 +5,8 @@ from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 
 from app import webapp, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm
-from app.models import User
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm
+from app.models import User, Post
 
 
 @webapp.before_request
@@ -17,9 +17,16 @@ def before_request():
 
 
 @webapp.route('/')
-@webapp.route('/index')
+@webapp.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, author=current_user)
+        db.session.add(post)  # pylint: disable=no-member
+        db.session.commit()  # pylint: disable=no-member
+        flash('Your post is now live!')
+        return redirect(url_for('index'))
     posts = [
         {
             'author': {'username': 'Olly'},
@@ -30,7 +37,7 @@ def index():
             'body': 'Josh is the coolest!'
         }
     ]
-    return render_template('index.html', title='Home', posts=posts)
+    return render_template('index.html', title='Home', posts=posts, form=form)
 
 
 @webapp.route('/login', methods=['GET', 'POST'])
