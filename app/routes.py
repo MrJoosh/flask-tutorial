@@ -16,7 +16,7 @@ def before_request():
         db.session.commit()  # pylint: disable=no-member
 
 
-@webapp.route('/')
+@webapp.route('/', methods=['GET', 'POST'])
 @webapp.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
@@ -27,16 +27,7 @@ def index():
         db.session.commit()  # pylint: disable=no-member
         flash('Your post is now live!')
         return redirect(url_for('index'))
-    posts = [
-        {
-            'author': {'username': 'Olly'},
-            'body': 'Beautiful day in Littleborough!'
-        },
-        {
-            'author': {'username': 'Jorja'},
-            'body': 'Josh is the coolest!'
-        }
-    ]
+    posts = current_user.followed_posts().all()
     return render_template('index.html', title='Home', posts=posts, form=form)
 
 
