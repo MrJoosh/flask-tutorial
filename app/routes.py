@@ -134,7 +134,7 @@ def unfollow(username):
             return redirect(url_for('user', username=username))
         current_user.unfollow(user)
         db.session.commit()  # pylint: disable=no-member
-        flash('You are no longer following {}!'.format(username))
+        flash('You are no longer following {}.'.format(username))
         return redirect(url_for('user', username=username))
     else:
         return redirect(url_for('index'))
