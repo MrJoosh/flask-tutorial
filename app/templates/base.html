@@ -43,8 +43,8 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
+        
+        {# application content needs to be provided in the app_context block #}
+        {% block app_content %}{% endblock %}
     </div>
-
-    {# application content needs to be provided in the app_context block #}
-    {% block app_content %}{% endblock %}
 {% endblock %}
