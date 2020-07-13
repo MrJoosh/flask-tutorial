@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url_for('index') }}">Home</a></li>
-                    <li><a href="{{ url_for('index') }}">Explore</a></li>
+                    <li><a href="{{ url_for('explore') }}">Explore</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_anonymous %}
@@ -36,7 +36,7 @@
 
 {% block content %}
     <div class="container">
-        {% with messages = get_falashed_messages() %}
+        {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-info" role="alert">{{ message }}</div>
