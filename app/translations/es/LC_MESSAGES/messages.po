@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-07-13 21:00+0100\n"
+"POT-Creation-Date: 2020-07-13 21:03+0100\n"
 "PO-Revision-Date: 2020-07-13 21:00+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -151,7 +151,8 @@ msgid "Back"
 msgstr ""
 
 #: app/templates/base.html:4
-msgid "%(title) - Microblog"
+#, python-format
+msgid "%(title)s - Microblog"
 msgstr ""
 
 #: app/templates/base.html:4
@@ -271,4 +272,7 @@ msgstr ""
 #: app/templates/email/reset_password.html:12
 msgid "The Microblog Team"
 msgstr ""
+
+#~ msgid "%(title) - Microblog"
+#~ msgstr ""
 
