@@ -9,7 +9,7 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
-from flask_babel import Babel
+from flask_babel import Babel, lazy_gettext as _l
 
 from config import Config
 
@@ -19,6 +19,7 @@ db = SQLAlchemy(webapp)
 migrate = Migrate(webapp, db)
 login = LoginManager(webapp)
 login.login_view = 'login'
+login.login_message = _l('Please login to access this page.')
 mail = Mail(webapp)
 bootstrap = Bootstrap(webapp)
 moment = Moment(webapp)
