@@ -25,7 +25,7 @@ bootstrap = Bootstrap(webapp)
 moment = Moment(webapp)
 babel = Babel(webapp)
 
-from app import routes, models, errors
+from app import routes, models, errors, cli
 
 if not webapp.debug:
     # Email error alerting
