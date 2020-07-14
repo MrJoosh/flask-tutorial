@@ -1,3 +1,4 @@
 FLASK_APP=microblog.py
 MAIL_SERVER=localhost
 MAIL_PORT=8025
+MS_TRANSLATOR_KEY=591b7fe2ea094563aced22c6baabe9ea
