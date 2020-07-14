@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-07-14 10:07+0100\n"
+"POT-Creation-Date: 2020-07-14 10:48+0100\n"
 "PO-Revision-Date: 2020-07-13 21:00+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -140,6 +140,14 @@ msgstr ""
 
 #: app/routes.py:217
 msgid "Your password has been reset."
+msgstr ""
+
+#: app/translate.py:9
+msgid "Error: the translation service is not configured."
+msgstr ""
+
+#: app/translate.py:20
+msgid "Error: the translation service failed."
 msgstr ""
 
 #: app/templates/404.html:4
