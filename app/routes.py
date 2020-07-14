@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flask import render_template, flash, redirect, url_for, request, g
+from flask import render_template, flash, redirect, url_for, request, g, jsonify
 from flask_login import current_user, login_user, logout_user, login_required
 from flask_babel import gettext as _, get_locale
 from werkzeug.urls import url_parse
@@ -13,6 +13,7 @@ from app.forms import(
 )
 from app.models import User, Post
 from app.email import send_password_reset_email
+from app.translate import translate
 
 
 @webapp.before_request
@@ -217,3 +218,17 @@ def reset_password(token):
         flash(_('Your password has been reset.'))
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
+
+
+@webapp.route('/translate', methods=['POST'])
+@login_required
+def translate_text():
+    return jsonify(
+        {
+            'text': translate(
+                request.form['text'],
+                request.form['source_language'],
+                request.form['dest_language']
+            )
+        }
+    )
