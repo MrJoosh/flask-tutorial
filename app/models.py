@@ -97,7 +97,7 @@ class Post(db.Model):
     body = db.Column(db.String(140))  # pylint: disable=no-member
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)  # pylint: disable=no-member
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))  # pylint: disable=no-member
-    language = db.Column(db.String(5))
+    language = db.Column(db.String(5))  # pylint: disable=no-member
 
     def __repr__(self):
         return "<Post {}>".format(self.body)
