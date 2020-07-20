@@ -4,9 +4,10 @@ from hashlib import md5
 
 import jwt
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask import current_app
 from flask_login import UserMixin
 
-from app import db, login, webapp
+from app import db, login
 
 
 followers = db.Table(  # pylint: disable=no-member
@@ -75,7 +76,7 @@ class User(UserMixin, db.Model):
                 'reset_password': self.id,
                 'exp': time() + expires_in
             },
-            key=webapp.config['SECRET_KEY'],
+            key=current_app.config['SECRET_KEY'],
             algorithm='HS256'
         ).decode('utf-8')
     
@@ -84,7 +85,7 @@ class User(UserMixin, db.Model):
         try:
             id = jwt.decode(
                 jwt=token,
-                key=webapp.config['SECRET_KEY'],
+                key=current_app.config['SECRET_KEY'],
                 algorithms=['HS256']
             )['reset_password']
         except:
