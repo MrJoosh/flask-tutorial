@@ -2,6 +2,7 @@ import os
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 
+from elasticsearch import Elasticsearch
 from flask import Flask, request, current_app
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -48,6 +49,9 @@ def create_app(config_class=Config):
     from app.auth import bp as auth_bp
     webapp.register_blueprint(auth_bp, url_prefix='/auth')
 
+    # Register elasticsearch instance if configured
+    webapp.elasticsearch = Elasticsearch([webapp.config['ELASTICSEARCH_URL']]) \
+                            if webapp.config['ELASTICSEARCH_URL'] else None
 
     if not webapp.debug and not webapp.testing:
         # Email error alerting
